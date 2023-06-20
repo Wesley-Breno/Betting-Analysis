@@ -13,12 +13,12 @@ from constants import LINKS_CAMPEONATOS_GP1
 from utils import pega_jogos_que_acontecerao, pega_dados_campeonato, analisa_pontos_de_jogos_que_acontecerao
 
 if __name__ == '__main__':
+    print('\n\n\t\tJogos para apostas de mais de 0.5 gols\n\n')
     for link in LINKS_CAMPEONATOS_GP1:
         times_pontuacoes = pega_dados_campeonato(link)
         jogos_pendentes = pega_jogos_que_acontecerao(link)
         analises_feitas = analisa_pontos_de_jogos_que_acontecerao()
 
-    print('\n\n\t\tJogos para apostas de mais de 0.5 gols\n\n')
-    for partida, valores in analises_feitas.items():
-        print(f'{partida}')  # Mostrando times que jogarao e o time mais provavel de ganhar
-        print()
+        for partida, valores in analises_feitas.items():
+            print(f'{partida}')  # Mostrando times que jogarao
+            print()
