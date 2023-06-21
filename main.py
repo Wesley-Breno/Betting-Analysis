@@ -22,6 +22,6 @@ if __name__ == '__main__':
 
         for partida, valores in analises_feitas.items():
             if partida not in partidas_analisadas:
-                print(f'{partida}')  # Mostrando times que jogarao
-                print()
+                print(f'\033[;32m◖\033[m{partida}\033[;32m◗\033[m')  # Mostrando times que jogarao
                 partidas_analisadas.append(partida)
+    print(f'\n{len(partidas_analisadas)} Jogos encontrados!')
