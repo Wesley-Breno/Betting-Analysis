@@ -14,11 +14,16 @@ from utils import pega_jogos_que_acontecerao, pega_dados_campeonato, analisa_pon
 
 if __name__ == '__main__':
     print('\n\n\t\tJogos para apostas de mais de 0.5 gols\n\n')
+    partidas_analisadas = []
+    
     for link in LINKS_CAMPEONATOS_GP1:
         times_pontuacoes = pega_dados_campeonato(link)
         jogos_pendentes = pega_jogos_que_acontecerao(link)
         analises_feitas = analisa_pontos_de_jogos_que_acontecerao()
 
         for partida, valores in analises_feitas.items():
-            print(f'{partida}')  # Mostrando times que jogarao
-            print()
+
+            if partida not in partidas_analisadas:
+                print(f'{partida}')  # Mostrando times que jogarao
+                print()
+                partidas_analisadas.append(partida)
