@@ -1,5 +1,9 @@
 <h1 align="center">Analise esportiva automatizada</h1>
 
+<p align="center">
+<img src="https://res.cloudinary.com/aposta10/image/upload/v1672957652/robo-aposta-gratis-dog96a.png" width=450>
+</p>
+
 <h2>Sobre</h2>
 <p>
   Projeto feito com a intenção de nao perder horas e horas analisando times para fazer apostas. Esse algoritmo é responsavel por acessar todos os campeonatos brasileiros
