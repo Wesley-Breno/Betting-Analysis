@@ -1,12 +1,19 @@
 import requests
 from bs4 import BeautifulSoup
-import unicodedata  # Modulo usado para trabalhar com caracteres Unicode
+import unicodedata
 from datetime import date
 import re
 from constants import ANALISES_FEITAS, TIMES_PONTUACOES, JOGOS_PENDENTES, NOMES_CAMPEONATOS
 
 
 def pega_dados_campeonato(url_campeonato: str):
+    """
+    Funcao responsavel por acessar a url de um campeonato do site da www.gp1.com.br e retornar um dicionario contendo
+    os nomes dos times e seus pontos especificos da classificacao.
+    :param url_campeonato: URL do campeonato do site da gp1
+    :return: Retorna um dicionario contendo os times e suas pontuacoes do campeonato
+    """
+
     dados = requests.get(url_campeonato)
     html = BeautifulSoup(dados.text, 'html.parser')
 
@@ -42,6 +49,11 @@ def pega_dados_campeonato(url_campeonato: str):
 
 
 def pega_jogos_que_acontecerao(url_campeonato: str):
+    """
+    Funcao responsavel por verificar os jogos que irao acontecer na data atual e retorna-los
+    :param url_campeonato: URL do campeonato que sera verificado os jogos que acontecerao na data atual
+    :return: Retorna uma lista contendo os jogos que irao acontecer, com o nome dos times e a data
+    """
     dados = requests.get(url_campeonato)
     html = BeautifulSoup(dados.text, 'html.parser')
 
@@ -51,7 +63,7 @@ def pega_jogos_que_acontecerao(url_campeonato: str):
     for item in html.select('.rodada.d-block.py-3.mb-4'):
         data_do_jogo = re.findall(r'(\d?\d)/(\d?\d)/(\d\d\d\d)', str(item.text.strip().splitlines()[0].split()))[0]
 
-        # Se a data do jogo for igual ou maior que a data atual
+        # Se a data do jogo for igual a data atual
         if int(data_do_jogo[0]) == int(data_atual[0]) and int(data_do_jogo[1]) == int(data_atual[1]) and int(
                 data_do_jogo[2]) == int(data_atual[2]):
 
@@ -77,7 +89,15 @@ def pega_jogos_que_acontecerao(url_campeonato: str):
     return JOGOS_PENDENTES
 
 
-def analisa_pontos_de_jogos_que_acontecerao():
+def analisa_pontos_de_jogos_que_acontecerao(pontos_minimos: int = 3):
+    """
+    Funcao responsavel por receber os jogos que acontecerao na data atual e analisar cada jogo que ira acontecer e
+    colocar em um dicionario os jogos que pelo menos um dos times tiverem mais de 3 pontos diferenca ao somar todos os
+    pontos. Tambem é possivel informar a quantidade de pontos necessarias ao informar um novo valor ao parametro pontos_minimos
+    :param pontos_minimos: Parametro que sera responsavel por adicionar os jogos com base se um dos times tiverem a
+    quantidade de pontos informada
+    :return: Retorna os jogos que um dos times tiverem 3 pontos a mais que o time adversario ou os pontos informados.
+    """
     pontos_time1 = 0
     pontos_time2 = 0
 
@@ -124,10 +144,10 @@ def analisa_pontos_de_jogos_que_acontecerao():
             continue
 
         else:
-            if pontos_time1 - pontos_time2 >= 3:
+            if pontos_time1 - pontos_time2 >= pontos_minimos:
                 ANALISES_FEITAS[f'{jogo[0]} x {jogo[1]}'] = [jogo[0], '/'.join(jogo[2])]
 
-            if pontos_time2 - pontos_time1 >= 3:
+            if pontos_time2 - pontos_time1 >= pontos_minimos:
                 ANALISES_FEITAS[f'{jogo[0]} x {jogo[1]}'] = [jogo[1], '/'.join(jogo[2])]
 
             pontos_time1 = 0

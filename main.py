@@ -2,7 +2,7 @@
 Este projeto se trata de um algoritmo capaz de fazer analise esportiva para jogos que acontecerao na data atual
 e mostrar quais jogos tem mais chances de ganhar apostando no tipo de aposta 'mais de 0.5 gols'.
 
-É importante ressaltar que ele da palpites para aposta, entao voce perder ou ganhar de qualquer forma por se tratar de
+É importante ressaltar que ele da palpites para aposta, entao voce podera perder ou ganhar de qualquer forma, por se tratar de
 apostas. O objetivo do projeto é fazer com que seja feita uma analise rapidamente para o usuario poder tomar a decisao
 final. Tenha um bom aproveito! Ficarei agradecido, caso voce tenha alguma sugestao de melhoria para este projeto! <3
 
@@ -22,8 +22,8 @@ if __name__ == '__main__':
         analises_feitas = analisa_pontos_de_jogos_que_acontecerao()
 
         for partida, valores in analises_feitas.items():
-
             if partida not in partidas_analisadas:
                 print(f'\033[;32m◖\033[m{partida}\033[;32m◗\033[m')  # Mostrando times que jogarao
                 partidas_analisadas.append(partida)
+
     print(f'\n{len(partidas_analisadas)} Jogos encontrados!')
