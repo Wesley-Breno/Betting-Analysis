@@ -1,20 +1,20 @@
-<h1 align="center">Analise esportiva automatizada</h1>
+<h1 align="center">Automated sports analysis</h1>
 
 <p align="center">
 <img src="https://res.cloudinary.com/aposta10/image/upload/v1672957652/robo-aposta-gratis-dog96a.png" width=450>
 </p>
 
-<h2>Sobre</h2>
+<h2>About</h2>
 <p>
-  Projeto feito com a intenção de nao perder horas e horas analisando times para fazer apostas. Esse algoritmo é responsavel por acessar todos os campeonatos brasileiros
-  e informar os jogos da data atual que tem mais probabilidade para apostas de tipo "mais de 0.5 gols". É importante ressaltar que este projeto se trata de um analisador 
-  automatico para dar palpites sobre apostas, o algoritmo nao é capaz de dar 100% de certeza, use-o com sabedoria.
+  Project made with the intention of not wasting hours and hours analyzing teams to place bets. This algorithm is responsible for accessing all Brazilian championships
+  and inform the games on the current date that are most likely for bets such as "over 0.5 goals". It is important to highlight that this project is an analyzer
+  automatic to make predictions about bets, the algorithm is not capable of giving 100% certainty, use it wisely.
 </p>
 
-<h2>Como usar?</h2>
+<h2>How to use?</h2>
 <p>
-  Para ter acesso ao projeto, basta clicar neste link para baixa-lo: https://github.com/Wesley-Breno/analise-esportiva/archive/refs/heads/main.zip
+  To access the project, simply click on this link to download it: https://github.com/Wesley-Breno/analise-esportiva/archive/refs/heads/main.zip
   <br>
-  Apartir que o projeto for baixado, abra ele no seu editor de codigo e baixe os requerimentos do projeto e use o programa em seu projeto ou use diretamente do codigo do 
-  projeto executando o arquivo main.py
+  Once the project is downloaded, open it in your code editor and download the project requirements and use the program in your project or use directly from the project code.
+  project running main.py file
 </p>
