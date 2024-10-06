@@ -1,29 +1,29 @@
 """
-Este projeto se trata de um algoritmo capaz de fazer analise esportiva para jogos que acontecerao na data atual
-e mostrar quais jogos tem mais chances de ganhar apostando no tipo de aposta 'mais de 0.5 gols'.
+This project is an algorithm capable of carrying out sports analysis for games that will take place on the current date
+and show which games you have the most chances of winning by betting on the 'over 0.5 goals' bet type.
 
-É importante ressaltar que ele da palpites para aposta, entao voce podera perder ou ganhar de qualquer forma, por se tratar de
-apostas. O objetivo do projeto é fazer com que seja feita uma analise rapidamente para o usuario poder tomar a decisao
-final. Tenha um bom aproveito! Ficarei agradecido, caso voce tenha alguma sugestao de melhoria para este projeto! <3
+It is important to highlight that it gives predictions for betting, so you can lose or win in any way, as it is a
+bets. The objective of the project is to make an analysis quickly so that the user can make a decision
+end. Have a good time! I would be grateful if you have any suggestions for improvements to this project! <3
 
 ASS: Wesley Oliveira ;)
 """
 
-from constants import LINKS_CAMPEONATOS_GP1
-from utils import pega_jogos_que_acontecerao, pega_dados_campeonato, analisa_pontos_de_jogos_que_acontecerao
+from constants import URLS_CHAMPIONSHIPS
+from src.scrapper import Scraper
 
 if __name__ == '__main__':
-    print('\n\n\t\tJogos para apostas de mais de 0.5 gols\n\n')
-    partidas_analisadas = []
+    scrapper = Scraper()
+    matches_analyzed = []
     
-    for link in LINKS_CAMPEONATOS_GP1:
-        times_pontuacoes = pega_dados_campeonato(link)
-        jogos_pendentes = pega_jogos_que_acontecerao(link)
-        analises_feitas = analisa_pontos_de_jogos_que_acontecerao()
+    for url in URLS_CHAMPIONSHIPS:
+        teams_scores = scrapper.get_championship_data(url)
+        outstanding_games = scrapper.get_todays_matches(url)
+        analyzes = scrapper.define_possible_games()
 
-        for partida, valores in analises_feitas.items():
-            if partida not in partidas_analisadas:
-                print(f'\033[;32m◖\033[m{partida}\033[;32m◗\033[m')  # Mostrando times que jogarao
-                partidas_analisadas.append(partida)
+        for match, _ in analyzes.items():
+            if match not in matches_analyzed:
+                print(f'\033[;32m◖\033[m{match}\033[;32m◗\033[m')  # Showing teams that will play
+                matches_analyzed.append(match)
 
-    print(f'\n{len(partidas_analisadas)} Jogos encontrados!')
+    print(f'\n{len(matches_analyzed)} Games found!')

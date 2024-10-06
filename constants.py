@@ -1,4 +1,4 @@
-LINKS_CAMPEONATOS_GP1 = [
+URLS_CHAMPIONSHIPS = [
     'https://www.gp1.com.br/tabelas/campeonato-brasileiro-a/',
     'https://www.gp1.com.br/tabelas/campeonato-brasileiro-b/',
     'https://www.gp1.com.br/tabelas/campeonato-brasileiro-c/',
@@ -30,11 +30,3 @@ LINKS_CAMPEONATOS_GP1 = [
     'https://www.gp1.com.br/tabelas/copa-libertadores-da-america/',
     'https://www.gp1.com.br/tabelas/liga-dos-campeoes-da-uefa/'
 ]
-
-ANALISES_FEITAS = dict()
-
-TIMES_PONTUACOES = dict()
-
-JOGOS_PENDENTES = []
-
-NOMES_CAMPEONATOS = []
